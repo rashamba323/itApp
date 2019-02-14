@@ -1,5 +1,7 @@
 package com.example.itapp;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class Utils {
     }
 
     void print(){
-        System.out.println(pcostList);
+        Log.e("ENTER", pcostList.toString());
     }
 
     private int idGenerator(){

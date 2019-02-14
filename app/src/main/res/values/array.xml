@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinner_type">
+        <item>Indirect costs</item>
+        <item>Direct costs</item>
+    </string-array>
+
+</resources>

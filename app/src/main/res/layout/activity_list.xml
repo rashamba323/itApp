@@ -14,4 +14,14 @@
         android:layout_height="match_parent">
     </ListView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/button_go_to_main"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Go to main screen"/>
+    </LinearLayout>
+
 </LinearLayout>

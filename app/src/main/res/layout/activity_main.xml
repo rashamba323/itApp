@@ -20,6 +20,13 @@
         android:layout_width="300dp"
         android:layout_height="50dp" />
 
+    <Spinner
+        android:id="@+id/spinner_type"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:autofillHints="Choose"/>
+
     <Button
         android:id="@+id/button_enter"
         android:layout_gravity="center"
