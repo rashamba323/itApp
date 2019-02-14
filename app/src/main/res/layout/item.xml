@@ -9,11 +9,13 @@
     <TextView
         android:id="@+id/text_view_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Name"/>
 
     <TextView
         android:id="@+id/text_view_price"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="100"/>
 
 </LinearLayout>
