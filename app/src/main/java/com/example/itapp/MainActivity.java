@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,11 +69,18 @@ public class MainActivity extends AppCompatActivity {
 
                 utils.create(name, price, type);
                 utils.yearCost(utils.pcostList);
+                toastMethod(price, name, type);
 
             }
         });
 
 
+
+
+    }
+
+    void toastMethod(int price, String name, String type){
+        Toast.makeText(this, "Add: "+ name + " " + price + " " + type , Toast.LENGTH_LONG).show();
     }
 
 
