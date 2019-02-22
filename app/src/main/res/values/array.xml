@@ -2,8 +2,8 @@
 <resources>
 
     <string-array name="spinner_type">
-        <item>Indirect costs</item>
         <item>Direct costs</item>
+        <item>Indirect costs</item>
     </string-array>
 
 </resources>

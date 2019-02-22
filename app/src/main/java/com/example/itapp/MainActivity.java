@@ -1,8 +1,8 @@
 package com.example.itapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,35 +11,44 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.adapter.ListAdapteter;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.edit_text_name)
+    EditText editTextName;
+    @BindView(R.id.edit_text_price)
+    EditText editTextPrice;
+    @BindView(R.id.spinner_type)
+    Spinner spinnerType;
+    @BindView(R.id.button_enter)
+    Button buttonEnter;
+    @BindView(R.id.button_go_to_list)
+    Button buttonGoToList;
+
 
     private String name;
     private int price;
 
-    private EditText editTextName;
-    private EditText editTextPrice;
-
-    private Button buttonEnter;
-    private Button buttonList;
-
-    private Spinner spinnerType;
     private String[] spinnerAray;
     private String type = "K";
 
     Utils utils = new Utils();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        editTextName = (EditText) findViewById(R.id.edit_text_name);
-        editTextPrice = (EditText) findViewById(R.id.edit_text_price);
+        init();
 
-        buttonEnter = (Button) findViewById(R.id.button_enter);
-        buttonList = (Button) findViewById(R.id.button_go_to_list);
 
-        spinnerType = (Spinner) findViewById(R.id.spinner_type);
         spinnerAray = getResources().getStringArray(R.array.spinner_type);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, spinnerAray);
@@ -47,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0){
+                if (position == 0) {
                     type = "K";
                 } else {
                     type = "P";
@@ -60,32 +69,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonEnter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                name = editTextName.getText().toString();
-                price = Integer.valueOf(editTextPrice.getText().toString());
-
-                utils.create(name, price, type);
-                utils.yearCost(utils.pcostList);
-                toastMethod(price, name, type);
-
-            }
-        });
-
-
-
-
     }
 
-    void toastMethod(int price, String name, String type){
-        Toast.makeText(this, "Add: "+ name + " " + price + " " + type , Toast.LENGTH_LONG).show();
+    void toastMethod(int price, String name, String type) {
+        Toast.makeText(this, "Add: " + name + " " + price + " " + type,
+                Toast.LENGTH_LONG).show();
     }
-
-
-
-
 
     private void init(){
         utils.create("Затраты на обучение ИТ-персонала в год", 1000, "P");
@@ -96,9 +85,27 @@ public class MainActivity extends AppCompatActivity {
         utils.create("Стоимость обслуживания техники по контрактам", 600, "K");
     }
 
-    private void run(){
+    private void run() {
         utils.print();
         utils.yearCost(utils.pcostList);
+    }
+
+    @OnClick({R.id.button_enter, R.id.button_go_to_list})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_enter:
+                name = editTextName.getText().toString();
+                price = Integer.valueOf(editTextPrice.getText().toString());
+
+                utils.create(name, price, type);
+                utils.yearCost(utils.pcostList);
+                toastMethod(price, name, type);
+                break;
+            case R.id.button_go_to_list:
+                Intent intent = new Intent(this, ListActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
 

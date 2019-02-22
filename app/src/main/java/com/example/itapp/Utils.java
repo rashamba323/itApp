@@ -2,6 +2,8 @@ package com.example.itapp;
 
 import android.util.Log;
 
+import com.example.Model.Pcost;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +11,12 @@ public class Utils {
 
     List<Pcost> pcostList = new ArrayList<>();
 
-    void create(String name,int price, String type){
+    public void create(String name,int price, String type){
         Pcost pcost = new Pcost(idGenerator(),name,price,type);
         pcostList.add(pcost);
     }
 
-    void yearCost(List list){
+    String yearCost(List list){
         int P = 0;
         int K = 0;
         for (int i = 0;i < list.size();i++){
@@ -25,6 +27,7 @@ public class Utils {
             }
         }
         System.out.println("Прямые затраты " + P * 0.015 + "\nКосвенные затраты " + K);
+        return "Прямые затраты " + P * 0.015 + "\nКосвенные затраты " + K;
     }
 
     void print(){
@@ -38,5 +41,9 @@ public class Utils {
         }
         id = pcostList.size();
         return id;
+    }
+
+    public List<Pcost> getPcostList() {
+        return pcostList;
     }
 }

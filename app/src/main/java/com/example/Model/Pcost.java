@@ -1,4 +1,4 @@
-package com.example.itapp;
+package com.example.Model;
 
 public class Pcost {
     private int id;
@@ -25,7 +25,9 @@ public class Pcost {
         return price;
     }
 
-
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {
