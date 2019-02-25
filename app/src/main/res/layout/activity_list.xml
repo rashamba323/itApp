@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ListActivity">
 
+    <include layout="@layout/list_content"/>
+
     <LinearLayout
+        android:id="@+id/enter_panel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/button_go_to_main"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:hint="Go to main screen"/>
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
         <EditText
             android:id="@+id/edit_text_name"
             android:layout_width="100dp"
@@ -32,12 +30,19 @@
             android:id="@+id/spinner_type"
             android:layout_width="100dp"
             android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/button_go_to_main"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Enter"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_above="@id/enter_panel">
         <TextView
             android:id="@+id/text_view_log"
             android:layout_width="match_parent"
@@ -46,11 +51,8 @@
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 
 
-</LinearLayout>
+
+</RelativeLayout>
